@@ -23,5 +23,5 @@ The file used in the projects are:
 
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+This project will not be completed without appreciating all the commentators at stackoverflow, AnalyticalVidya and of course, our able internet friend Google.
 
