@@ -12,7 +12,7 @@ The Project is a comprehesive analysis of rentals and patronage an hypothetical 
 
 The Project analyse rentage of bicycles by cities, Frequent rentals days, Months and Year.
 
-It is a user friendly user interface project where users get to select the city they wants and get analysis of the most common days where rentals are high or low, lowest and hisgest destination route, days and Months where rents spike and so much more
+It is a user friendly user interface project where users get to select the city they wants and get analysis of the most common days where rentals are high or low, lowest and highest destination route, days and Months where rents spike and so much more from the chosen city
 
 ### Files used
 The file used in the projects are:
@@ -23,5 +23,13 @@ The file used in the projects are:
 
 
 ### Credits
-This project will not be completed without appreciating all the commentators at stackoverflow, AnalyticalVidya and of course, our able internet friend Google.
+This project will not be completed without appreciating all the commentators at stackoverflow, AnalyticalVidya.com blog and of course, our able internet friend Google.
 
+
+### Language and libraries use in the Project
+
+The Project is written in python programming Language with the following python libraries coming handy in the course of the project
+
+- Numpy
+- Pandas
+- time
