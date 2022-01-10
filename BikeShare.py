@@ -133,7 +133,7 @@ def Time_Stats():
  
 print()
 
-
+# Analysis for Duration of Trips Travelled
 def Duration(get_filters):
     df = get_filters[0]
     
@@ -164,7 +164,7 @@ def Duration(get_filters):
 
     print("_" * 50)
     
-
+# Analysis for Station
 def Station_Analysis(get_filters):
     df  = get_filters[0]
 
@@ -183,7 +183,7 @@ def Station_Analysis(get_filters):
     print("_" * 50)
     print()
    
-
+# Analysis for Travel_Time
 def Travel_Time_Analysis(get_filters):
     df  = get_filters[0]
     Max_Travel_time = df["Trip Duration"].max()
@@ -198,7 +198,7 @@ def Travel_Time_Analysis(get_filters):
     print()
 
 
-
+# Analysis for Gender and Travel Time
 def Gender_Birth_Analysis(get_filters):
     df = get_filters[0]
 
@@ -245,7 +245,7 @@ def Gender_Birth_Analysis(get_filters):
   
 
 
-
+# Function for displaying rows of data as requested by users
 def display_raw_data(df):
     i = 0
     raw = input("Do you want to see 5 lines of raw data: Please enter yes/no  \n ").lower()
@@ -266,7 +266,7 @@ def display_raw_data(df):
 
 
 
-    
+# Main Function that starts the Program    
 def main():
     while True:
         print("Welcome to Bike Share Exploratory Analysis!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
