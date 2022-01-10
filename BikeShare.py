@@ -111,7 +111,7 @@ def get_filters():
 
  
         break                    
-def Time_Stats():
+def Time_Stats():   
     #print('Time Statistics of duration')
     start = time.time()
     df, month, day, city = get_filters()
@@ -127,6 +127,17 @@ def Time_Stats():
         filter = "Day"
     else:
         filter = "Day and Month"
+    print(f"Getting you started for analysis of {city} filter by: {filter.title()}" )
+    return df, month, day, city, filter
+
+ 
+print()
+
+
+def Duration(get_filters):
+    df = get_filters[0]
+    
+
 
 
     Freq_Month = df["Months"].mode()[0]
@@ -134,14 +145,13 @@ def Time_Stats():
     Freq_Start_Hour = pd.to_datetime(df["Start Time"]).dt.hour.mode()[0]
     Freq_Travel_time = pd.to_datetime(df["Start Time"]).dt.time.mode()[:1][0].strftime("%H:%M:%S")
     df1 = pd.DataFrame(df.groupby("User Type")['Trip Duration'].sum()).reset_index().rename(columns = {"Trip Duration": "Total Trip Duration"})
-
-    print(f"Getting you start for analysis of {city} filter by: {filter.title()}" )
     print()
+    
+
+
+
     print("Duration time Analysis")
-
-
-
-
+    print()
     print(f"The Most Common Day of the week is : {Freq_Days}")
     print(f"The Most Common month is : {Freq_Month}")
     print(f"The Most Common Starting Hour is : {str(Freq_Start_Hour)}:00H")
@@ -153,13 +163,18 @@ def Time_Stats():
 
 
     print("_" * 50)
+    
+
+def Station_Analysis(get_filters):
+    df  = get_filters[0]
+
 
     Freq_Start_Station = df["Start Station"].mode()[0]
     Freq_End_Station = df["End Station"].mode()[0]
     Freq_Trip = df.groupby(["Start Station", "End Station"]).size().sort_values(ascending = False).index[0]
 
     print()
-    print("Station Analysis")
+    print("Station analysis")
     print(f"Most common start station is: {Freq_Start_Station}")
     print(f"Most common End station is: {Freq_End_Station}")
     print(f" The Most Frequent Trip is from {Freq_Trip[0]} --> {Freq_Trip[1]}")
@@ -167,18 +182,25 @@ def Time_Stats():
 
     print("_" * 50)
     print()
+   
 
-    print("Travel Time analysis")
+def Travel_Time_Analysis(get_filters):
+    df  = get_filters[0]
     Max_Travel_time = df["Trip Duration"].max()
+    Min_Travel_time = df["Trip Duration"].min()
     Avg_Travel_time = df["Trip Duration"].mean()
-
+    print("Travel Time Analysis")
     print(f"Maximum Duration Time is {np.round(Max_Travel_time,1)}")
+    print(f"Minimum Duration Time is {np.round(Min_Travel_time,1)}")
     print(f"Average Duration Time is {np.round(Avg_Travel_time, 1)}")
 
     print("_" * 50)
     print()
 
-    print('User Gender and Birth Analysis')
+
+
+def Gender_Birth_Analysis(get_filters):
+    df = get_filters[0]
 
     df2 = pd.DataFrame(df.groupby("User Type").size()).reset_index().rename(columns = {0: "Total Number"})
     missing_columns = ["Gender", "Birth Year"]
@@ -202,8 +224,8 @@ def Time_Stats():
 
 
 
-    
 
+    print("Gender and Birth Year Analysis")
 
     print("Users Distribution") 
     print(df2)
@@ -220,7 +242,7 @@ def Time_Stats():
     print("_" * 50)
 
 
-    print(f"This Program took  {np.round(time.time() - start,1)} Seconds")
+  
 
 
 
@@ -251,6 +273,11 @@ def main():
         print()
         display = display_raw_data(get_filters()[0])
         result = Time_Stats()
+        Duration_Result = Duration(result)
+        Travel_Result = Travel_Time_Analysis(result)
+        Station_Result = Station_Analysis(result)
+        User_Analysis = Gender_Birth_Analysis(result)
+        
         print()
         
         restart = input("Do you wants to restart the program: Enter Yes/no  \n").upper()
